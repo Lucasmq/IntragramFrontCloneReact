@@ -5,6 +5,10 @@ section#post-list {
     padding: 0 30px;
 }
 
+.postClick{
+    width: 100%;
+}
+
 section#post-list article{
     background: #FFF;
     border: 1px solid #DDD;
