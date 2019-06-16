@@ -6,6 +6,7 @@
 }
 
 body {
+    padding-top: 50px;
     background: #fafafa;
     font: 14px Arial, Helvetica, sans-serif; 
     -webkit-font-smoothing: antialiased !important;

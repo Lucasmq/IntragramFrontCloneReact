@@ -1,11 +1,13 @@
-header#ain-header {
+header#main-header {
+    top: 0px;
+    position: fixed;
     background: #fff;
     height: 72px;
     border-bottom: 1px solid #DDD;
+    width: 100%;
 }
 
 header#main-header .header-content {
-    width: 100%;
     max-width: 980px;
     margin: 0 auto;
     height: 72px;
