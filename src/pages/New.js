@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../services/api'
 
-import './New.css'
+import '../css/New.css'
 
 class New extends Component {
     state = {
