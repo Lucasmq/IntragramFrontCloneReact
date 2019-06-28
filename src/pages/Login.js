@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect}          from "react-router-dom";
+import api from '../services/api'
 
 import instagramLogo from "../assets/logo.png"
 import "../css/Login.css"
@@ -9,6 +11,7 @@ class Login extends Component {
     this.state ={
         emailUser: "",
         passwordUser: "",
+        autenticate: false,
     }
 
     this.onChange = this.onChange.bind(this);
@@ -17,7 +20,19 @@ class Login extends Component {
     }
     handleSubmit = async e =>{
         e.preventDefault();
-        window.confirm("Enviado!")
+        await api.post("auth/autenticate", {"email": this.state.emailUser, "password":this.state.passwordUser })
+        .then(resp => {
+            console.log(resp);
+            let payload = JSON.stringify(resp.data);
+            localStorage.setItem("payload", payload);
+            if(resp.status === 200){
+                this.setState({autenticate:true})
+            }
+        })
+        .catch((err) =>{
+            console.log(err.response.data.error);
+        })
+        
     }
 
     onChange = e => {
@@ -27,7 +42,7 @@ class Login extends Component {
     render(){
         return(
             <section id="login">
-
+           { this.state.autenticate && < Redirect to={{ pathname: "/"}} /> }
                    <article >
                    <header>
                        <div className="user-info">
