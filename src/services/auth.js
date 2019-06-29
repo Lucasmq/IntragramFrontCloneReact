@@ -9,5 +9,6 @@ export const isAuthenticated = () => {
 
 export const getUserData = () => {
     let payload = localStorage.getItem("payload");
+    // console.log(payload)
     return payload ? payload : null;
 }

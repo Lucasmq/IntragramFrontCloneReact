@@ -17,7 +17,7 @@ class New extends Component {
         const data = new FormData();
 
         data.append('image', this.state.image);
-        //data.append('author', this.state.author);
+        //data.append('author', JSON.parse(getUserData()).author);
         data.append('place', this.state.place);
         data.append('description', this.state.description);
         data.append('hashtags', this.state.hashtags);

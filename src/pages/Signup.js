@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect}          from "react-router-dom";
 import api from '../services/api'
+import { Redirect} from "react-router-dom";
 
 import instagramLogo from "../assets/logo.png"
 import "../css/Signup.css"
@@ -12,7 +12,7 @@ class Signup extends Component {
         emailUser: "",
         passwordUser: "",
         nameUser: "",
-        autenticate: false,
+        authenticated: false,
     }
 
     this.onChange = this.onChange.bind(this);
@@ -27,7 +27,8 @@ class Signup extends Component {
             let payload = JSON.stringify(resp.data);
             localStorage.setItem("payload", payload);
             if(resp.status === 200){
-                this.setState({autenticate:true})
+               // this.props.history.push('/');
+               this.setState({ authenticated:true})
             }
         })
         .catch((err) =>{
@@ -43,7 +44,7 @@ class Signup extends Component {
     render(){
         return(
             <section id="signup">
-                { this.state.autenticate && < Redirect to={{ pathname: "/"}} /> }
+                { (this.state.authenticated) && <Redirect to={{ pathname: "/" }} /> }
                 <article >
                    <header>
                         <div className="user-info">

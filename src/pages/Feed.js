@@ -66,7 +66,7 @@ class Feed extends Component {
                    <article key={post._id}>
                    <header>
                        <div className="user-info">
-                           {console.log(post.author.name)}
+                           {/* {console.log(post.author.name)} */}
                            <span> {post.author.name} </span>
                            <span className="place">{post.place}</span>
                        </div>
