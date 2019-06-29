@@ -6,7 +6,7 @@ import '../css/New.css'
 class New extends Component {
     state = {
         image: null,
-        author: "",
+       // author: "",
         place: '',
         description: '',
         hashtags: '',
@@ -17,7 +17,7 @@ class New extends Component {
         const data = new FormData();
 
         data.append('image', this.state.image);
-        data.append('author', this.state.author);
+        //data.append('author', this.state.author);
         data.append('place', this.state.place);
         data.append('description', this.state.description);
         data.append('hashtags', this.state.hashtags);
@@ -39,14 +39,6 @@ class New extends Component {
         return(
             <form id="new-post" onSubmit={this.handleSubmit}>
                 <input type="file" onChange={this.handleImageChange}/>
-
-                <input
-                    type="text"
-                    name="author"
-                    placeholder="Autor do post"
-                    onChange={this.handleChange}
-                    value={this.state.author}
-                />
 
                 <input
                     type="text"

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect}          from "react-router-dom";
 import api from '../services/api'
 
 import instagramLogo from "../assets/logo.png"
@@ -22,17 +21,16 @@ class Login extends Component {
         e.preventDefault();
         await api.post("auth/autenticate", {"email": this.state.emailUser, "password":this.state.passwordUser })
         .then(resp => {
-            console.log(resp);
             let payload = JSON.stringify(resp.data);
+            /* Salva os dados do usuario no localStorage */
             localStorage.setItem("payload", payload);
             if(resp.status === 200){
-                this.setState({autenticate:true})
+                this.props.history.push('/');
             }
         })
         .catch((err) =>{
             console.log(err.response.data.error);
         })
-        
     }
 
     onChange = e => {
@@ -42,7 +40,6 @@ class Login extends Component {
     render(){
         return(
             <section id="login">
-           { this.state.autenticate && < Redirect to={{ pathname: "/"}} /> }
                    <article >
                    <header>
                        <div className="user-info">

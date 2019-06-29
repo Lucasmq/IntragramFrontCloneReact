@@ -10,7 +10,6 @@ import liked from '../assets/liked.svg'
 import comment from '../assets/comment.svg'
 import send from '../assets/send.svg'
 
-//let cliques = 0;
 class Feed extends Component {
     state = {
         feed: [],
@@ -19,7 +18,7 @@ class Feed extends Component {
     async componentDidMount(){
         this.registerToScoket()
         const response = await api.get('posts');
-
+        console.log(response.data)
         this.setState({feed: response.data })
     }
 
@@ -67,7 +66,8 @@ class Feed extends Component {
                    <article key={post._id}>
                    <header>
                        <div className="user-info">
-                           <span> {post.author} </span>
+                           {console.log(post.author.name)}
+                           <span> {post.author.name} </span>
                            <span className="place">{post.place}</span>
                        </div>
                        <img src={more} alt="Mais" />
